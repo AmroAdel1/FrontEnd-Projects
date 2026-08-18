@@ -1,9 +1,9 @@
-name: Deploy Frontend Projects to GitHub Pages
+name: Deploy Pages
 
 on:
   push:
     branches:
-      - main  # Change to 'master' if your default branch is named master
+      - main # Change to 'master' if your main branch is named master
 
 permissions:
   contents: read
@@ -21,16 +21,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Uploads the entire repository
+          path: '.' # Uploads the entire repo root
 
       - name: Deploy to GitHub Pages
         id: deployment
